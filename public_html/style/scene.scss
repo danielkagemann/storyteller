@@ -1,0 +1,37 @@
+/* 
+    Created on : 30.09.2014, 10:32:05
+    Author     : corefault
+*/
+* {
+   font-family: 'Open Sans Condensed', sans-serif;
+   margin:0;
+   padding:0; 
+}
+
+#text {
+   font-size:18px;
+   color:#505050;
+}
+
+#scene {
+   margin:0 auto;
+   width:400px;
+   margin-top:100px;
+
+   img.fl {
+      float:left;
+      display:none;
+   }
+   
+   h1 {
+      font-size:32px;
+      font-weight:normal;
+      
+   }
+   
+   h2 {
+      font-size:16px;
+      font-weight:normal;
+      color:#777;
+   }
+}
