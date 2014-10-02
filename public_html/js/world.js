@@ -1,5 +1,4 @@
 var _world = (function() {
-    var changedelay = 3000;
     return {
         /**
          * start routine.
@@ -23,13 +22,14 @@ var _world = (function() {
          */
         scenario: function(top, left, img, message, endpos, duration, callback) {
             _world.createId(top, left, img);
+            $('#move').fadeIn(800);
             $('h3').coreType({
                text: message,
                finish: function() {
                    setTimeout(function() {
                        $('#move').remove();
                        callback();
-                   }, _world.changedelay);
+                   }, 3000);
                }
            });
            $('#move').animate({left: endpos + "px"}, duration);
@@ -45,34 +45,31 @@ var _world = (function() {
                           "Morgens aufstehen und zur Arbeit fahren.",
                           0, 
                           2500, 
-                          function() {_worker.sheep();}
+                          function() {_world.sheep();}
                          );
         },
         /**
          * sheeps are coming to town.
          */
         sheep: function() {
-           setTimeout(function() { 
-               _world.createId(72,0,"sheep.gif");
-               $('h3').coreType({
-                   text:"Auf dem Land gibt es neben Kühen auch Schafe.",
-                   finish: function() {$('#move').remove();_world.getPost();}
-               });
-               setTimeout(function() {
-                   $('#move').animate({left: 120}, 2500);
-               }, 1500);
-           }, changedelay);
+           this.scenario(72, 
+                         0, 
+                         "sheep.gif", 
+                         "Auf dem Land gibt es neben Kühen auch Schafe.", 
+                         120, 
+                         2500,
+                         function() {_world.getPost();}
+                        );
         },
         getPost: function() {
-           this.createId(70,0,"post_ri.gif");
-           $('#move').fadeIn(400);
-           $('h3').coreType({
-               text:"Die Post kommt recht spät.",
-               finish: function() {$('#move').remove();_world.fromWork();}
-           });
-           setTimeout(function() {
-               $('#move').animate({left: 0}, 2500);
-           }, 1500);
+           this.scenario(70, 
+                         0, 
+                         "post_ri.gif", 
+                         "Die Post kommt recht spät heute.", 
+                         150, 
+                         2500,
+                         function() {_world.fromWork();}
+                        );
         },
         /**
          * helper routine for dynamic object creation.
