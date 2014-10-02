@@ -3,7 +3,7 @@ var _handler = {
    index: 0,
    
     initialize: function() {
-        index = 0;
+        this.index = 1;
         this.show();
     },
          

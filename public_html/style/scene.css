@@ -14,7 +14,8 @@
 #scene {
   margin: 0 auto;
   width: 400px;
-  margin-top: 100px; }
+  margin-top: 100px;
+  position: relative; }
   #scene img.fl {
     float: left;
     display: none; }
@@ -26,5 +27,11 @@
     font-weight: normal;
     color: #777;
     margin-bottom: 30px; }
+  #scene h3 {
+    clear: both;
+    font-weight: normal;
+    font-size: 15px;
+    padding-top: 10px;
+    font-family: 'Gruppo', cursive; }
 
 /*# sourceMappingURL=scene.css.map */

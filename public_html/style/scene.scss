@@ -17,6 +17,7 @@
    margin:0 auto;
    width:400px;
    margin-top:100px;
+   position:relative;
 
    img.fl {
       float:left;
@@ -34,5 +35,13 @@
       font-weight:normal;
       color:#777;
       margin-bottom:30px;
+   }
+   
+   h3 {
+       clear:both;
+       font-weight:normal;
+       font-size: 15px;
+       padding-top:10px;
+       font-family: 'Gruppo', cursive;
    }
 }
