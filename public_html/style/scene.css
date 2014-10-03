@@ -19,6 +19,12 @@
   #scene img.fl {
     float: left;
     display: none; }
+  #scene img.bw {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: gray;
+    filter: grayscale(100%);
+    /*filter: url(desaturate.svg#greyscale);*/ }
   #scene h1 {
     font-size: 32px;
     font-weight: normal; }
@@ -30,8 +36,8 @@
   #scene h3 {
     clear: both;
     font-weight: normal;
-    font-size: 15px;
+    font-size: 14px;
     padding-top: 10px;
-    font-family: 'Gruppo', cursive; }
+    font-family: 'Cabin Sketch', cursive; }
 
 /*# sourceMappingURL=scene.css.map */

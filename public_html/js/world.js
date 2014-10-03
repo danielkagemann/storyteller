@@ -34,6 +34,21 @@ var _world = (function() {
            });
            $('#move').animate({left: endpos + "px"}, duration);
         },
+        /**
+         * display message
+         * @param {type} message the message to type
+         * @param {type} callback finish callback
+         */
+        text: function(message, callback) {
+            $('h3').coreType({
+               text: message,
+               finish: function() {
+                   setTimeout(function() {
+                       callback();
+                   }, 3000);
+               }
+           });
+        },
 
         /**
          * going to work scenario
@@ -52,7 +67,7 @@ var _world = (function() {
          * sheeps are coming to town.
          */
         sheep: function() {
-           this.scenario(72, 
+           this.scenario(70, 
                          0, 
                          "sheep.gif", 
                          "Auf dem Land gibt es neben Kühen auch Schafe.", 
@@ -61,6 +76,9 @@ var _world = (function() {
                          function() {_world.getPost();}
                         );
         },
+        /**
+         * postman is coming bring some invoice :-(
+         */
         getPost: function() {
            this.scenario(70, 
                          0, 
@@ -68,8 +86,65 @@ var _world = (function() {
                          "Die Post kommt recht spät heute.", 
                          150, 
                          2500,
-                         function() {_world.fromWork();}
+                         function() {_world.goPost();}
                         );
+        },
+        /**
+         * post driving away
+         */
+        goPost: function() {
+           this.scenario(70, 
+                         150, 
+                         "post_le.gif", 
+                         "Wieder nur Rechnungen.", 
+                         0, 
+                         2500,
+                         function() {_world.backWork();}
+                        );
+        },
+        /**
+         * back from work after a long day
+         */
+        backWork: function() {
+            this.scenario(70,
+                          0, 
+                          "auto_ri.gif", 
+                          "Nach einem langen Tag endlich wieder zu Hause.",
+                          180, 
+                          2500, 
+                          function() {_world.night();}
+                         );
+        },
+        /**
+         * night in town.
+         */
+        night: function() {
+            $('#scene .fl:eq(3)').attr('src', "image/4-abend.gif");
+            $('#scene .fl:eq(5)').attr('src', "image/6-abend.gif");
+            
+            $('#scene .fl').addClass("bw");
+            this.text("Auch der längste Tag geht einmal zu Ende.", function(){_world.manInTheMoon();});
+        },
+        /**
+         * there is a man in the moon.
+         */
+        manInTheMoon: function() {
+            this.text(
+                "Wenn es Nacht ist geschehen manchmal seltsame Dinge.<br/>Der Mann im Mond beobachtet alles.",
+                function() {
+                    $('#scene .fl:eq(5)').attr('src', "image/6-abend-1.gif");
+                    _world.hitchhiking();
+                });
+        },
+        /**
+         * hitchhiking the sheeps.
+         */
+        hitchhiking: function() {
+            this.text("Doch die Stille ist trügerisch.",
+            function() {
+                $('#scene .fl:eq(2)').attr('src', "image/3-ufo.gif");
+                $('#scene .fl:eq(2)').removeClass("bw");
+            });
         },
         /**
          * helper routine for dynamic object creation.
