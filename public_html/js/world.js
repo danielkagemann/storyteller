@@ -1,3 +1,8 @@
+var _work = (function() {
+    
+});
+
+
 var _world = (function() {
     return {
         /**
@@ -6,9 +11,19 @@ var _world = (function() {
         show: function () {
             $('#scene img').fadeIn(3000);
             $('h3').coreType({
-                text:"Ein ganz normaler Tag<br/>irgendwo auf dem Land.",
+                text:"Ein ganz normaler Tag. Irgendwo auf dem Land.",
                 finish: function(){_world.goWork();}
             });
+        },
+        /**
+         * helper routine for dynamic object creation.
+         * @param {type} top top position
+         * @param {type} left left position
+         * @param {type} img iage in image folder
+         * @param {type} id the DOM id
+         */
+        createId: function(top, left, img, id) {
+           $('#scene').append('<div id="'+id+'" style="display:none;position:absolute;top:'+top+'px;left:'+left+'px;"><img src="image/'+img+'"/></div>');
         },
         /**
          * helper routine for scenarios with dynamic movements.
@@ -70,8 +85,8 @@ var _world = (function() {
            this.scenario(70, 
                          0, 
                          "sheep.gif", 
-                         "Auf dem Land gibt es neben Kühen auch Schafe.", 
-                         120, 
+                         "Schafe suchen sich einen ruhigen Platz.", 
+                         140, 
                          2500,
                          function() {_world.getPost();}
                         );
@@ -83,8 +98,8 @@ var _world = (function() {
            this.scenario(70, 
                          0, 
                          "post_ri.gif", 
-                         "Die Post kommt recht spät heute.", 
-                         150, 
+                         "Manchmal kommt die Post vorbei.", 
+                         280, 
                          2500,
                          function() {_world.goPost();}
                         );
@@ -94,14 +109,23 @@ var _world = (function() {
          */
         goPost: function() {
            this.scenario(70, 
-                         150, 
+                         280, 
                          "post_le.gif", 
-                         "Wieder nur Rechnungen.", 
+                         "Wieder nur Rechnungen. #@!?$", 
                          0, 
                          2500,
-                         function() {_world.backWork();}
+                     function() {_world.ballon();}
                         );
         },
+        /**
+         * strange things happen.
+         */
+        ballon: function() {
+            this.text("Ohhh. Ein Ballon.", 
+                      function() {
+                         $('#scene .fl:eq(0)').attr('src', "image/1-ballon.gif");
+                      });
+        },        
         /**
          * back from work after a long day
          */
@@ -130,7 +154,7 @@ var _world = (function() {
          */
         manInTheMoon: function() {
             this.text(
-                "Wenn es Nacht ist geschehen manchmal seltsame Dinge.<br/>Der Mann im Mond beobachtet alles.",
+                "Wenn es Nacht wird, geschehen manchmal seltsame Dinge. Der Mann im Mond beobachtet alles.",
                 function() {
                     $('#scene .fl:eq(5)').attr('src', "image/6-abend-1.gif");
                     _world.hitchhiking();
@@ -144,16 +168,25 @@ var _world = (function() {
             function() {
                 $('#scene .fl:eq(2)').attr('src', "image/3-ufo.gif");
                 $('#scene .fl:eq(2)').removeClass("bw");
+                _world.text(
+                        "Aliens haben es auf die Schafe abgesehen.",
+                        function() {
+                            _world.text(
+                                    "Zurück bleibt nur ein einzelnes verstörtes Schaf.",
+                                    function() {
+                                        $('#scene .fl:eq(2)').attr('src', "image/3-alleine.gif");
+                                        $('#scene .fl:eq(2)').addClass("bw");
+                                        _world.batman();
+                                    }
+                                    );
+                        });
             });
         },
         /**
-         * helper routine for dynamic object creation.
-         * @param {type} top top position
-         * @param {type} left left position
-         * @param {type} img iage in image/* folder
+         * ask batman for help.
          */
-        createId: function(top, left, img) {
-           $('#scene').append('<div id="move" style="display:none;position:absolute;top:'+top+'px;left:'+left+'px;"><img src="image/'+img+'"/></div>');
+        batman: function() {
+            //todo
         }
    };
 }) ();
