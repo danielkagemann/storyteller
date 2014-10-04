@@ -1,5 +1,5 @@
 var _handler = {
-   list: [_intro, _world],
+   list: [function() {_intro.show();}, function() {_world.initialize();}],
    index: 0,
    
     initialize: function() {
@@ -8,7 +8,7 @@ var _handler = {
     },
          
     show: function() {
-       this.list[this.index].show();            
+       this.list[this.index]();            
     },
 
     next: function() {
