@@ -29,14 +29,14 @@ var _util = (function() {
                 if (enable) {
                     $('#scene .fl').addClass("bw");
                 }else {
-                    $('#scene .fl').removeClassClass("bw");
+                    $('#scene .fl').removeClass("bw");
                 }
             } else {
                 index--;
                 if (enable) {
                     $('#scene .fl:eq('+index+')').addClass("bw");
                 }else {
-                    $('#scene .fl:eq('+index+')').removeClassClass("bw");
+                    $('#scene .fl:eq('+index+')').removeClass("bw");
                 }
             }
         },

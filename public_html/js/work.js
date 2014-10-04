@@ -18,8 +18,8 @@ var _work = (function() {
         come: function() {
             _util.createId(70,0,"auto_ri.gif", element);
             _util.animateId(180,durationCome, element);
-            _util.text("Jeder Arbeitstag geht zu Ende und die Menschen kommen nach Hause.",
-                        function() {$('#'+element).remove();_world.next();}
+            _util.text("Feierabend!",
+                        function() {_world.next();}
                        );
         }
     };

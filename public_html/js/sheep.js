@@ -17,11 +17,11 @@ var _sheep = (function() {
                 _util.text(
                         "Aliens haben es auf die Schafe abgesehen.",
                         function() {
-                            _util.text(
+                           _util.image(3, "3-alleine.gif");
+                           _util.nightmode(3, true);
+                           _util.text(
                                     "Zurück bleibt nur ein einzelnes verstörtes Schaf.",
                                     function() {
-                                        _util.image(3, "3-alleinegif");
-                                        _util.nightmode(3, true);
                                         _world.next();
                                     }
                                     );
