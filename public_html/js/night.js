@@ -67,6 +67,9 @@ var _night = (function() {
                         }, 1500);
                      }
                      );
+        },
+        endOfStory: function() {
+           
         }
     };
 }) ();
