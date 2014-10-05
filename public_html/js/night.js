@@ -30,7 +30,7 @@ var _night = (function() {
         },
         batmanCannotCome: function () {
             _util.text(
-                "Was ist das ? Es regnet. Batman kann nicht kommen.",
+                "Oh nein. Es regnet. Batman hat leider keine Regenjacken.",
                 function() {
                   _world.next();
             });
@@ -42,34 +42,19 @@ var _night = (function() {
                }, 1500);            
         },
         
-        makeHappyEnd: function(){
-           _util.text("Eine Geschichte ohne Happy End ?",
+        noHappyEnd: function(){
+           _util.text("Dieses Mal haben die Aliens gewonnen.<br/>Wird es Batman mit den Aliens aufnehmen?<br/>Wird er sich eine Regenjacke kaufen?",
                      function() {
-                        _util.text("Das geht nicht.",
+                         // disable rain
+                        $('#rain').fadeOut(2000);
+                        $('#scene img').fadeOut(2000);
+                        _util.text("Wir werden es erfahren. Irgendwann.",
                                    function() {
-                                      _world.next();
+                                       $('h3').text("");
+                                       $('h3').coreType({text:"Ende.",errors:70});
                                    });
                      }
                      );
-        },
-        rewind: function() {
-           _util.text("ZURÜCKSPULEN...",
-                     function() {
-                        // disable rain
-                        $('#rain').fadeOut(1000);
-                        setTimeout(function() {
-                           _util.image(3,"3-ufo.gif");
-                           _util.nightmode(3,false);
-                           
-                           _util.text("Wo ist unser Held ?", function() {
-                              worker.next();
-                           });
-                        }, 1500);
-                     }
-                     );
-        },
-        endOfStory: function() {
-           
         }
     };
 }) ();

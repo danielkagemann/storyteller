@@ -18,4 +18,3 @@ just some thoughts.
 9. single sheep
 10. call batman
 11. it is raining. batman cannot come
-12. 
